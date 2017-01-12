@@ -20,7 +20,7 @@ if(document.domain=='axismoves.aktivlearn.com'){ $('html').css('background', 'ur
 	}).appendTo("head");
 }
 
-function load_page(){
+function reset_notifications(){
 qr=new XMLHttpRequest();
 qr.open('get','https://mahindraslp.aktivlearn.com/recent_activity');
 qr.send();
@@ -28,14 +28,24 @@ qr.onreadystatechange=function(){
 var recentActivityHtml = this.responseText;
 var lines = recentActivityHtml.split("\n");
 //alert(lines.length);
+if(lines.length>100){
 for (var i = 0; i<=lines.length; i++){
 	var search_pos = lines[i].search("https://mahindraslp.aktivlearn.com/dashboard/ignore_stream_item/");
 	if(search_pos>0){
-		var stream_item_id_pos = search_pos+64+4;
-		stream_item_urls[i] = lines[i].substring(search_pos,stream_item_id_pos);
-	}
+		//alert(search_pos);
+		var stream_item_id_pos = search_pos+68;
+		var stream_link = lines[i].substring(search_pos,stream_item_id_pos);
+		$.ajax({
+    		url: stream_link,
+    		type: 'DELETE',
+    		success: function(result) {}
+    	});		
 }
-console.log(stream_item_urls);
+}
+}
 }
 };
-load_page();
+
+$( ".circle-container" ).click(function() {
+  reset_notifications();
+});
