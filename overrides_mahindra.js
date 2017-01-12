@@ -27,7 +27,7 @@ qr.send();
 qr.onreadystatechange=function(){
 var recentActivityHtml = this.responseText;
 var lines = recentActivityHtml.split("\n");
-alert(lines.length);
+//alert(lines.length);
 for (var i = 0; i<=lines.length; i++){
 	var search_pos = lines[i].search("https://mahindraslp.aktivlearn.com/dashboard/ignore_stream_item/");
 	if(search_pos>0){
