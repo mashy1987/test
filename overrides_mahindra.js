@@ -20,6 +20,8 @@ if(document.domain=='axismoves.aktivlearn.com'){ $('html').css('background', 'ur
 	}).appendTo("head");
 }
 
+$('div.noNotificationsPopUpStyle div div').attr('style','color:#000');
+
 function reset_notifications(){
 qr=new XMLHttpRequest();
 qr.open('get','https://mahindraslp.aktivlearn.com/recent_activity');
@@ -48,6 +50,5 @@ for (var i = 0; i<=lines.length; i++){
 
 $( ".circle-container" ).click(function() {
   reset_notifications();
-  //set notifications to 0
   $('div.notifications-count').html("0");
 });
