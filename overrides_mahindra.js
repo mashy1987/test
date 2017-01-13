@@ -48,4 +48,6 @@ for (var i = 0; i<=lines.length; i++){
 
 $( ".circle-container" ).click(function() {
   reset_notifications();
+  //set notifications to 0
+  $('div.notifications-count').html("0");
 });
